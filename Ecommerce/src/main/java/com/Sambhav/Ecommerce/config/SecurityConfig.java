@@ -25,13 +25,13 @@ public class SecurityConfig
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception
     {
-        http.csrf(customizer -> customizer.disable()
+        http.csrf(customizer -> customizer.disable())
                     .authorizeHttpRequests(auth -> auth
                             .requestMatchers("/register").permitAll() // ✅ Allow this endpoint without login
-                            .anyRequest().authenticated()                      // 🔐 Require login for all other routes
-                    )
-                    .formLogin();
-        }; // You can also use .formLogin(Customizer.withDefaults());
+                            .anyRequest().authenticated());                      // 🔐 Require login for all other routes
+
+
+         // You can also use .formLogin(Customizer.withDefaults());
         return http.build();
     }
     @Bean
@@ -63,3 +63,10 @@ public class SecurityConfig
 //Does your role match ROLE_ADMIN?
 //If yes → ✅ Authorized
 //If no → ❌ Access denied (403 Forbidden)
+//cd path/to/Ecommercedemo
+//git init
+//git add .
+//git commit -m "Initial commit"
+//git remote add origin https://github.com/Sambhav88/Ecommercedemo.git
+//git branch -M main
+//git push -u origin main
